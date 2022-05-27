@@ -38,7 +38,7 @@ const ProductList = (props) => {
     var formData = new FormData();
     formData.append('ids', checkedList);
     try {
-      const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/',
+      const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/deleteProducts',
         formData,
         {
           headers: {
