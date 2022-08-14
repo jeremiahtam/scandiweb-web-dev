@@ -8,7 +8,8 @@ const ProductList = (props) => {
 
   const getProductHandler = async () => {
     try {
-      const res = await axios.get('https://scandiweb-junior-web-dev.000webhostapp.com/backend/', {},
+      // const res = await axios.get('https://scandiweb-junior-web-dev.000webhostapp.com/backend/', {},
+      const res = await axios.get('http://localhost/scandiweb-backend/', {},
         {
           headers: {
             "Accept": "application/json",
@@ -31,14 +32,16 @@ const ProductList = (props) => {
     getProductHandler()
   }, [])
 
+
   //list of selected products
   const [checkedList, setCheckedList] = useState([])
   //delete products handler
-  const deleteProducts = async (checkedList) => {
+  const deleteProducts = async () => {
     var formData = new FormData();
     formData.append('ids', checkedList);
     try {
-      const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/deleteProducts',
+      const res = await axios.post('http://localhost/scandiweb-backend/ProductController/deleteProducts',
+        // const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/deleteProducts',
         formData,
         {
           headers: {
@@ -55,6 +58,8 @@ const ProductList = (props) => {
       } else {
         getProductHandler()
       }
+      setCheckedList([])
+      console.log('new list: ' + checkedList)
     } catch (e) {
       console.log(e)
     }
@@ -97,9 +102,10 @@ const ProductList = (props) => {
                       if (checkedList.includes(value.id)) {
                         var newList = checkedList.filter(item => item !== value.id)
                         setCheckedList(newList)
-                        // console.log(newList)                        
+                        console.log(newList)
                       } else {
                         checkedList.push(value.id)
+                        console.log(checkedList)
                       }
                     }}
                     type="checkbox" id="flexCheckDefault" />

@@ -24,7 +24,8 @@ const AddProduct = () => {
     );
 
     try {
-      const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/addProduct',
+      // const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/addProduct',
+      const res = await axios.post('http://localhost/scandiweb-backend/ProductController/addProduct',
         formData,
         {
           headers: {
@@ -87,27 +88,27 @@ const AddProduct = () => {
             Yup.object().shape({
               sku: Yup.string().required('SKU is required'),
               name: Yup.string().required('Name is required'),
-              price: Yup.string().required('Price is required'),
+              price: Yup.number().typeError('you must specify a number').required('Price is required'),
               productType: Yup.string().required('Select a product type'),
-              size: Yup.string().when('productType', {
+              size: Yup.number().when('productType', {
                 is: (val) => val == "DVD",
-                then: Yup.string().required('Enter size')
+                then: Yup.number().typeError('you must specify a number').required('Enter size')
               }),
-              weight: Yup.string().when('productType', {
+              weight: Yup.number().when('productType', {
                 is: (val) => val == "Book",
-                then: Yup.string().required('Enter weight')
+                then: Yup.number().typeError('you must specify a number').required('Enter weight')
               }),
-              height: Yup.string().when('productType', {
+              height: Yup.number().when('productType', {
                 is: (val) => val == "Furniture",
-                then: Yup.string().required('Enter height'),
+                then: Yup.number().typeError('you must specify a number').required('Enter height'),
               }),
-              width: Yup.string().when('productType', {
+              width: Yup.number().when('productType', {
                 is: (val) => val == "Furniture",
-                then: Yup.string().required('Enter width'),
+                then: Yup.number().typeError('you must specify a number').required('Enter width'),
               }),
-              length: Yup.string().when('productType', {
+              length: Yup.number().when('productType', {
                 is: (val) => val == "Furniture",
-                then: Yup.string().required('Enter length'),
+                then: Yup.number().typeError('you must specify a number').required('Enter length'),
               })
             })
           }
