@@ -8,8 +8,8 @@ const ProductList = (props) => {
 
   const getProductHandler = async () => {
     try {
-      // const res = await axios.get('https://scandiweb-junior-web-dev.000webhostapp.com/backend/', {},
-      const res = await axios.get('http://localhost/scandiweb-backend/', {},
+      const res = await axios.get('https://scandiweb-junior-web-dev.000webhostapp.com/backend/', {},
+      // const res = await axios.get('http://localhost/scandiweb-backend/', {},
         {
           headers: {
             "Accept": "application/json",
@@ -40,8 +40,8 @@ const ProductList = (props) => {
     var formData = new FormData();
     formData.append('ids', checkedList);
     try {
-      const res = await axios.post('http://localhost/scandiweb-backend/ProductController/deleteProducts',
-        // const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/deleteProducts',
+      // const res = await axios.post('http://localhost/scandiweb-backend/ProductController/deleteProducts',
+        const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/deleteProducts',
         formData,
         {
           headers: {

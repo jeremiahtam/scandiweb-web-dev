@@ -24,8 +24,8 @@ const AddProduct = () => {
     );
 
     try {
-      // const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/addProduct',
-      const res = await axios.post('http://localhost/scandiweb-backend/ProductController/addProduct',
+      const res = await axios.post('https://scandiweb-junior-web-dev.000webhostapp.com/backend/ProductController/addProduct',
+      // const res = await axios.post('http://localhost/scandiweb-backend/ProductController/addProduct',
         formData,
         {
           headers: {
